@@ -24,7 +24,7 @@ app:
         SYMFONY__SESSION_PATH: /tmp/forum/sessions
         NGINX_KEY: /etc/nginx/ssl/nginx.key
         NGINX_CERT: /etc/nginx/ssl/nginx.crt
-        PHP_IDE_CONFIG: "serverName=BP University Forum"
+        PHP_IDE_CONFIG: "serverName=Forum API"
         APP_URL_PREFIX: forum
         APP_ENV: dev
     links:
