@@ -1,5 +1,5 @@
 # Should be docker/dev/Dockerfile
-FROM tuimedia/forum:develop
+FROM inanimatt/forum:develop
 
 MAINTAINER Matt Robinson <matt@tuimedia.com>
 
