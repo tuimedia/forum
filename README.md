@@ -2,19 +2,19 @@
 
 Web application for project `BPxxxx project name`
 
-- [Requirements](#markdown-header-requirements)
-- [Development environment setup](#markdown-header-development-setup)
-    - [Docker setup](#markdown-header-docker-setup)
-    - [Starting the dev environment](#markdown-header-starting-the-dev-environment)
-    - [Cleaning up](#markdown-header-cleaning-up)
-    - [Database](#markdown-header-database)
-    - [Configuration](#markdown-header-configuration)
-    - [Rebuilding the containers](#markdown-header-rebuilding-the-containers)
-- [API Endpoints](#markdown-header-api-endpoints)
-    - [Conventions](#markdown-header-conventions)
-    - [Topic endpoints](#markdown-header-topic-endpoints)
-    - [Post endpoints](#markdown-header-post-endpoints)
-    - [Reply endpoints](#markdown-header-reply-endpoints)
+- [Requirements](#requirements)
+- [Development environment setup](#development-setup)
+    - [Docker setup](#docker-setup)
+    - [Starting the dev environment](#starting-the-dev-environment)
+    - [Cleaning up](#cleaning-up)
+    - [Database](#database)
+    - [Configuration](#configuration)
+    - [Rebuilding the containers](#rebuilding-the-containers)
+- [API Endpoints](#api-endpoints)
+    - [Conventions](#conventions)
+    - [Topic endpoints](#topic-endpoints)
+    - [Post endpoints](#post-endpoints)
+    - [Reply endpoints](#reply-endpoints)
 
 ## Requirements
 
