@@ -1,0 +1,38 @@
+AppBundle\Entity\Topic:
+    topic{1..75}:
+        userId: '<username()>'
+        namespace: test
+        title: <sentence()>
+        externalReference: 50%? <url()>
+        created: '<dateTimeThisYear()>'
+
+    topic{76..100}:
+        userId: '<username()>'
+        namespace: test
+        title: <sentence()>
+        externalReference: 50%? <url()>
+        created: '<dateTimeThisYear()>'
+        parent: '@topic*'
+
+AppBundle\Entity\Post:
+    post{1..250}:
+        userId: '<username()>'
+        topic: '@topic*'
+        content: '<sentence()>'
+        created: '<dateTimeThisYear()>'
+        score: '<numberBetween(-2,10)>'
+
+AppBundle\Entity\Reply:
+    reply{1..150}:
+        userId: '<username()>'
+        post: '@post*'
+        content: '<sentence()>'
+        created: '<dateTimeThisYear()>'
+        score: '<numberBetween(-2,10)>'
+
+AppBundle\Entity\PostRating:
+    rating{1..250}:
+        userId: '<username()>'
+        post: '@post*'
+        created: '<dateTimeThisYear()>'
+        score: '<randomElement([-1,1])>'

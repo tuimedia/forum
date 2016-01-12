@@ -1,0 +1,31 @@
+# To get started with security, check out the documentation:
+# http://symfony.com/doc/current/book/security.html
+security:
+
+    # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
+    providers:
+        chain_provider:
+            chain:
+                providers: [in_memory, on_demand]
+        in_memory:
+            memory:
+                users:
+                    assurance:
+                        password: ~
+                        roles: [ROLE_ADMIN, ROLE_USER]
+        on_demand:
+            id: user_provider
+
+    firewalls:
+        # disables authentication for assets and the profiler, adapt it according to your needs
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+        main:
+            pattern: ^/
+            anonymous: ~
+            stateless: true
+            guard:
+                authenticators:
+                    - jwt_authenticator

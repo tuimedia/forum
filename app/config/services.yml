@@ -1,0 +1,67 @@
+# Learn more about services, parameters and containers at
+# http://symfony.com/doc/current/book/service_container.html
+parameters:
+#    parameter_name: value
+
+services:
+    jwt_coder:
+        class: AppBundle\Service\JWTCoder
+        arguments:
+            - "%jwt_key%"
+
+    jwt_authenticator:
+        class: AppBundle\Security\JWTAuthenticator
+        arguments:
+            - "@jwt_coder"
+        public: false
+
+    user_provider:
+        class: AppBundle\Security\User\OnDemandUserProvider
+        arguments:
+            - "@user_repository"
+
+    user_repository:
+        class: AppBundle\Entity\UserRepository
+
+    fractal_serializer:
+        lazy: true
+        class: League\Fractal\Serializer\DataArraySerializer
+
+    fractal:
+        lazy: true
+        class: League\Fractal\Manager
+        calls:
+            - [setSerializer, ["@fractal_serializer"]]
+
+    transformer_abstract:
+        abstract: true
+        calls:
+            - [setContainer, ["@service_container"]]
+
+    transformer_topic:
+        class: AppBundle\Transformer\Topic
+        parent: transformer_abstract
+        lazy: true
+
+    transformer_post:
+        class: AppBundle\Transformer\Post
+        parent: transformer_abstract
+        lazy: true
+
+    transformer_rating:
+        class: AppBundle\Transformer\Rating
+        parent: transformer_abstract
+        lazy: true
+
+    transformer_reply:
+        class: AppBundle\Transformer\Reply
+        parent: transformer_abstract
+        lazy: true
+
+    display_name_listener:
+        class: AppBundle\Service\DisplayNameListener
+        arguments:
+            - "@jwt_coder"
+            - "%profile_service%"
+        tags:
+            - { name: 'kernel.event_listener', event: 'kernel.response', method: 'getUsernames' }

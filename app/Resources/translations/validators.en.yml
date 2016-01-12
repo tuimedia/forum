@@ -1,0 +1,30 @@
+namespace:
+    type: "Namespace must be a string"
+    length: "Namespace must be between 3-32 characters"
+    blank: "Namespace must not be blank"
+
+topic:
+    title:
+        blank: "Title cannot be blank"
+        length: "Title must be between 1-255 characters"
+        type: "Title must be a string"
+
+    reference:
+        length: "External reference must be between 0-255 characters"
+        type: "External reference must be a string"
+
+rating:
+    score:
+        invalid: "Score must be -1 or 1"
+
+post:
+    is_sticky:
+        invalid: "isSticky must be true or false"
+    length:
+        too_short: "Post content is too short."
+        too_long: "Post is too long. Maximum length is 20,000 characters"
+
+reply:
+    length:
+        too_short: "Reply is too short."
+        too_long: "Reply is too long. Maximum length is 20,000 characters"

@@ -1,0 +1,31 @@
+db:
+    image: mysql:5.6
+    environment:
+        MYSQL_ROOT_PASSWORD: hairnet
+        MYSQL_USER: forum
+        MYSQL_PASSWORD: forum
+        MYSQL_DATABASE: forum
+
+app:
+    build: .
+    dockerfile: docker/dev/Dockerfile
+    ports:
+        - "9443:443"
+    volumes:
+        - ./:/var/www/app
+        - /tmp:/tmp
+    environment:
+        DOCUMENT_ROOT: /var/www/app/web
+        SERVER_NAME: forum.dev
+        SYMFONY__DATABASE_HOST: db
+        SYMFONY__DATABASE_NAME: forum
+        SYMFONY__DATABASE_USER: forum
+        SYMFONY__DATABASE_PASSWORD: forum
+        SYMFONY__SESSION_PATH: /tmp/forum/sessions
+        NGINX_KEY: /etc/nginx/ssl/nginx.key
+        NGINX_CERT: /etc/nginx/ssl/nginx.crt
+        PHP_IDE_CONFIG: "serverName=BP University Forum"
+        APP_URL_PREFIX: forum
+        APP_ENV: dev
+    links:
+        - db
